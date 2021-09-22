@@ -33,6 +33,7 @@ Route::post('/upload_plantix', function (Request $request) {
         $data = $data.$value;
         $data = $data."\n";
     }
+    echo ($data);
     file_put_contents('./data.txt', $data.PHP_EOL , FILE_APPEND | LOCK_EX);
     return $request->all();
 });
