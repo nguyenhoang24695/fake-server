@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/upload_plantix1', function (Request $request) {
-    return $request->getContent();
+    return file_get_contents('data.txt');
 });
 Route::post('/upload_plantix', function (Request $request) {
 //    dd($request->files);
@@ -33,7 +33,8 @@ Route::post('/upload_plantix', function (Request $request) {
         $data = $data.$value;
         $data = $data."\n";
     }
-    echo ($data);
-    file_put_contents('./data.txt', $data.PHP_EOL , FILE_APPEND | LOCK_EX);
+
+    file_put_contents('./data.txt', $data.PHP_EOL );
     return $request->all();
 });
+
